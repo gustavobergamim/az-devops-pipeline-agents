@@ -1,13 +1,13 @@
-FROM microsoft/vsts-agent:ubuntu-16.04-docker-18.06.1-ce-standard
+FROM gustavobergamim/vsts-agent:ubuntu-16.04-docker-18.06.1-ce-standard-netcore-3.0
 
-# Install .NET Core SDK 3.0 and initialize package cache
+# Install .NET Core SDK 3.1 and initialize package cache
 RUN curl https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb > packages-microsoft-prod.deb \
  && dpkg -i packages-microsoft-prod.deb \
  && rm packages-microsoft-prod.deb \
  && apt-get update \
  && apt-get install -y --no-install-recommends \
     apt-transport-https \
-    dotnet-sdk-3.0 \
+    dotnet-sdk-3.1 \
  && rm -rf /var/lib/apt/lists/* \
  && rm -rf /etc/apt/sources.list.d/*
 RUN dotnet help
